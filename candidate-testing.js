@@ -42,13 +42,26 @@ function gradeQuiz(candidateAnswers) {
   //  console.log("Incorrect");
   //}
 //template literal that displays each of the candidate’s responses in addition to the corresponding correct answers
+let grade = '';
+let totalCorrectAnswers = 0;
 for(let i = 0; i < candidateAnswers.length; i++){
-console.log(`You answered: ${candidateAnswers[i]}. The correct answer is: ${correctAnswers[i]}.`);
+  if(candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+    totalCorrectAnswers += 1;
+  } else {
+    totalCorrectAnswers += 0;
+  }
+  console.log(`You answered: ${candidateAnswers[i]}. The correct answer is: ${correctAnswers[i]}.`);
 }
-  let grade;
+grade = (totalCorrectAnswers/questions.length) * 100
+
+//(Number of Correct Answers) / (Number of Quiz Questions) * 100
   //TODO 3.2 use this variable to calculate the candidates score.
-
-
+  console.log(grade + '%');
+  if(grade >= 80) {
+    console.log('You have passed the test! Congratulations!')
+  } else {
+    console.log('You have failed the test. Better luck next time!')
+  }
   return grade;
 }
 
